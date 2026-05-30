@@ -11,9 +11,28 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div class="bg-parallax" aria-hidden="true">
+    <div class="bg-parallax__track" id="bg-parallax-track">
+      <div class="bg-parallax__layer">
+
+        <img src="assets/background/bg.gif" alt="" class="bg-parallax__media" />
+
+        <div class="bg-parallax__fallback">
+          <div class="bg-parallax__stars"></div>
+          <div class="bg-parallax__grid"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-parallax__overlay"></div>
+  </div>
+
   <div class="noise" aria-hidden="true"></div>
-  <div class="gradient-orb gradient-orb--1" aria-hidden="true"></div>
-  <div class="gradient-orb gradient-orb--2" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
 
   <header class="header" id="header">
     <nav class="nav container">
@@ -35,7 +54,20 @@
     <!-- Hero -->
     <section class="hero section" id="hero">
       <div class="container hero__inner">
-        <div class="hero__content reveal">
+        <div class="hero__portrait reveal">
+          <div class="hero__portrait-frame">
+            <img src="assets/portrait/portrait.jpg" alt="Daniil Skvyrskyi" class="hero__portrait-img" />
+            <div class="hero__portrait-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <span class="hero__portrait-label">Portrait</span>
+              <span class="hero__portrait-path">assets/portrait/portrait.jpg</span>
+            </div>
+          </div>
+          <div class="hero__portrait-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero__main">
+          <div class="hero__content reveal reveal--delay">
           <p class="hero__eyebrow">
             <span class="hero__status"></span>
             Available for opportunities
@@ -56,23 +88,24 @@
             <a href="#projects" class="btn btn--primary">View Projects</a>
             <a href="#contact" class="btn btn--ghost">Get in Touch</a>
           </div>
-        </div>
-        <div class="hero__stats reveal reveal--delay">
-          <div class="stat-card">
-            <span class="stat-card__value">3+</span>
-            <span class="stat-card__label">Years Engineering</span>
           </div>
-          <div class="stat-card">
-            <span class="stat-card__value">$100K+</span>
-            <span class="stat-card__label">Quarterly Savings Delivered</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-card__value">98%+</span>
-            <span class="stat-card__label">ML Model Accuracy</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-card__value">Top 3</span>
-            <span class="stat-card__label">EcoCAR Perception Score</span>
+          <div class="hero__stats reveal reveal--delay-2">
+            <div class="stat-card">
+              <span class="stat-card__value">3+</span>
+              <span class="stat-card__label">Years Engineering</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">$100K+</span>
+              <span class="stat-card__label">Quarterly Savings Delivered</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">2nd</span>
+              <span class="stat-card__label">Grainger Computing Innovation Prize</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">80+</span>
+              <span class="stat-card__label">IEEE Chapter Members Led</span>
+            </div>
           </div>
         </div>
       </div>
@@ -92,17 +125,17 @@
         <div class="about-grid">
           <div class="about-card reveal">
             <p class="about-text">
-              I'm a Computer Vision &amp; Control graduate student at
-              <strong>Illinois Institute of Technology</strong> with a passion for
-              building systems that bridge machine learning and the physical world.
-              From optimizing gunshot-detection models on embedded hardware to
-              designing 23-sensor autonomous vehicle suites, I thrive on turning
-              complex problems into reliable, production-ready solutions.
+              I'm pursuing an M.S. in Artificial Intelligence — Computer Vision &amp; Control
+              at <strong>Illinois Institute of Technology</strong>, focused on building AI
+              systems that work in the real world. My experience spans model optimization
+              for embedded deployment, computer vision for autonomous navigation, and
+              full-stack pipelines that use AI to automate analysis and decision-making.
             </p>
             <p class="about-text">
-              Beyond technical work, I've led an 80-member IEEE chapter, directed
-              robotics initiatives on Jetson Nano, and earned recognition including
-              an IEEE publication and 2nd place in the Grainger Computing Innovation Prize.
+              At Digital Design Corporation, I've shipped production ML — from compressing
+              real-time detection models to building Gemini-powered evaluation workflows.
+              Through projects like RiskWatch and self-driving robotics initiatives, I'm
+              driven by making AI reliable, efficient, and genuinely useful beyond the lab.
             </p>
           </div>
           <div class="education-list reveal reveal--delay">
@@ -126,10 +159,10 @@
             <div class="leadership-mini">
               <h4>Leadership</h4>
               <ul>
+                <li><strong>Arduino Robotics</strong> — Teaching Assistant (2024–2025)</li>
                 <li><strong>IEEE Club</strong> — President (2023–2024)</li>
                 <li><strong>Hackathon Club</strong> — Vice President (2022–2023)</li>
                 <li><strong>ML Club</strong> — Vice President (2022–2023)</li>
-                <li><strong>Arduino Robotics</strong> — Teaching Assistant (2024–2025)</li>
               </ul>
             </div>
           </div>
@@ -231,9 +264,12 @@
         </div>
         <div class="projects-grid">
           <article class="project-card reveal">
-            <div class="project-card__visual project-card__visual--hud">
-              <div class="project-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l3 3 7-7"/></svg>
+            <div class="project-card__image">
+              <img src="assets/projects/hud.jpg" alt="Heads-Up Navigation System prototype" />
+              <div class="project-card__image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span class="project-card__placeholder-label">Project photo</span>
+                <span class="project-card__placeholder-path">assets/projects/hud.jpg</span>
               </div>
             </div>
             <div class="project-card__body">
@@ -262,9 +298,12 @@
           </article>
 
           <article class="project-card reveal reveal--delay">
-            <div class="project-card__visual project-card__visual--risk">
-              <div class="project-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div class="project-card__image">
+              <img src="assets/projects/riskwatch.jpg" alt="RiskWatch wearable fall-detection system" />
+              <div class="project-card__image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span class="project-card__placeholder-label">Project photo</span>
+                <span class="project-card__placeholder-path">assets/projects/riskwatch.jpg</span>
               </div>
             </div>
             <div class="project-card__body">
@@ -311,8 +350,8 @@
           <div class="skill-group">
             <h3 class="skill-group__title">Languages</h3>
             <div class="skill-chips">
-              <span class="skill-chip skill-chip--primary">Python</span>
-              <span class="skill-chip skill-chip--primary">C/C++</span>
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">C/C++</span>
               <span class="skill-chip">Java</span>
               <span class="skill-chip">VHDL</span>
               <span class="skill-chip">Assembly</span>
@@ -322,8 +361,8 @@
           <div class="skill-group">
             <h3 class="skill-group__title">AI &amp; ML</h3>
             <div class="skill-chips">
-              <span class="skill-chip skill-chip--primary">TensorFlow</span>
-              <span class="skill-chip skill-chip--primary">PyTorch</span>
+              <span class="skill-chip">TensorFlow</span>
+              <span class="skill-chip">PyTorch</span>
               <span class="skill-chip">Computer Vision</span>
               <span class="skill-chip">scikit-learn</span>
               <span class="skill-chip">Signal Processing</span>
@@ -332,7 +371,7 @@
           <div class="skill-group">
             <h3 class="skill-group__title">Systems &amp; Embedded</h3>
             <div class="skill-chips">
-              <span class="skill-chip skill-chip--primary">Embedded Systems</span>
+              <span class="skill-chip">Embedded Systems</span>
               <span class="skill-chip">ROS2</span>
               <span class="skill-chip">Linux</span>
               <span class="skill-chip">Jetson Nano</span>
