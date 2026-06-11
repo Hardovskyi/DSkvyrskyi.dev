@@ -17,6 +17,13 @@
     });
   }
 
+  // --- Missing-image fallback: remove broken imgs so styled placeholders show ---
+  document.querySelectorAll('.project-card__image img, .hero__portrait-img').forEach((img) => {
+    const drop = () => img.remove();
+    img.addEventListener('error', drop);
+    if (img.complete && img.naturalWidth === 0) drop();
+  });
+
   // --- Parallax background ---
   const bgTrack = document.getElementById('bg-parallax-track');
   let parallaxTarget = 0;
